@@ -1,0 +1,90 @@
+//package aaaadas
+////
+////import (
+////"encoding/json"
+////"fmt"
+////)
+////
+////type Person struct {
+////	FirstName string `json:"firstName"`
+////	LastName  string `json:"lastName"`
+////}
+////
+////func main() {
+////	bytes, err := json.Marshal(Person{
+////		FirstName: "John",
+////		LastName:  "Dow",
+////	})
+////	if err != nil {
+////		panic(err)
+////	}
+////
+////	fmt.Println(string(bytes))
+////}
+//package main
+//
+//import (
+//	"fmt"
+//	"io/ioutil"
+//	"log"
+//	"net/http"
+//	"strings"
+//)
+//
+//func main() {
+//	client := &http.Client{}
+//	const query = `{
+//  ubeswapFactories(first: 1) {
+//    id
+//    pairCount
+//    totalVolumeUSD
+//    totalVolumeCELO
+//  }
+//  tokens(first: 1) {
+//    id
+//    symbol
+//    name
+//    decimals}
+//    }`
+//	//var data = strings.NewReader(`"query":"{tokens(first: 1) { id symbol name tradeVolume}}"`)
+//	//req, err := http.NewRequest("POST", "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2", data)
+//	//if err != nil {
+//	//	log.Fatal(err)
+//	//}
+//
+//	//data
+//	//{
+//	//	"operationName":"ubeswapDayDatas",
+//	//	"variables":{
+//	//	"startTime":1621987198,
+//	//		"skip":0
+//	//},
+//	//	"query":"query ubeswapDayDatas($startTime: Int!, $skip: Int!) {\n  ubeswapDayDatas(first: 1000, skip: $skip, where: {date_gt: $startTime}, orderBy: date, orderDirection: asc, subgraphError: allow) {\n    id\n    date\n    totalVolumeUSD\n    dailyVolumeUSD\n    dailyVolumeCELO\n    totalLiquidityUSD\n    totalLiquidityCELO\n    __typename\n  }\n}\n"
+//	//}
+//	var data = strings.NewReader(`{ "query": "{ubeswapFactories(first: 5) { id pairCount totalVolumeUSD totalVolumeCELO} tokens(first: 5) { id symbol name tradeVolume}}" }`)
+//	//var data = strings.NewReader(`{
+//    //查询流动性
+////	"operationName":"ubeswapDayDatas",
+////    "variables":{
+////        "startTime":1621987198,
+////        "skip":0
+////    },
+////    "query":"query ubeswapDayDatas($startTime: Int!, $skip: Int!) {\n  ubeswapDayDatas(first: 2, skip: $skip, where: {date_gt: $startTime}, orderBy: date, orderDirection: asc, subgraphError: allow) {\n    id\n    date\n    totalVolumeUSD\n    dailyVolumeUSD\n    dailyVolumeCELO\n    totalLiquidityUSD\n    totalLiquidityCELO\n    __typename\n  }\n}\n"
+////}`)
+//	//查询交易对价格
+//	//查询交易对价格
+//	//https://app.ubeswap.org/#/swap?inputCurrency=0x471ece3750da237f93b8e339c536989b8978a438&outputCurrency=0x918146359264c492bd6934071c6bd31c854edbc3
+//	//"query blocks {  t1653411600: pair(id: "0xb460f9ae1fea4f77107146c1960bb1c978118816", block: {number: 13166610}, subgraphError: allow) { token0Price token1Price}"
+//	req, err := http.NewRequest("POST", "https://api.thegraph.com/subgraphs/name/ubeswap/ubeswap",data)
+//	req.Header.Set("Content-Type", "application/json")
+//	resp, err := client.Do(req)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	defer resp.Body.Close()
+//	bodyText, err := ioutil.ReadAll(resp.Body)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	fmt.Printf("%s\n", bodyText)
+//}
